@@ -1,0 +1,25 @@
+version: '3'
+services:
+  
+  proposta-api:
+    depends_on:
+      - mysql-propostas
+    container_name: propostas-api
+    image: propostas-api
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod   
+ 
+  mysql-propostas:
+    image: mysql:latest
+    container_name: propostas-mysql
+    expose:
+      - 3306
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=propostas
+      - MYSQL_ROOT_HOST=% 
+      
